@@ -1,0 +1,21 @@
+Complexity analysis is the study of code to find how the run time will change with input size. For the analysis of our project I am going to use Big-O notation which is used to describe the worst case run time of the section of code. It is shown as O(n), or O(n^2), or O(log n). I am going to include a brief overview of why the section computes that way.
+
+Analysis of Reservation insertion complexity:
+	-The ReservationList file handles the insertion function.
+	-The complexity of the insertion into the list is O(1) if there is none there because it has only comparison and assignment to head and tail.
+	-The complexity of the insertion into the list is also O(1) if head is not null pointer because it just directly access the tail and assigns the pointer.
+Analysis of Reservation removal complexity:
+	-The ReservationList file handles the remove function.
+	-The complexity of removing from the list is O(n^2). Although there is many components in the function most of them are assignment and comparison which is constant.
+	-The components that add to the complexity are the traversal for searching which is O(n) and the loop for deletion and reassignment which is O(n). Multiplied together 	gives our final answer of O(n).
+
+Analysis of Waiting-list processing complexity:
+	-The WaitingList file has multiple functions with different complexities.
+	-The addition to the list has complexity of O(1) because it just compares and assigns.
+	-The removal from wait list is O(n) because it has a traversal to get to the node but the rest is comparison and assignment.
+	-The isEmpty check is O(n) because it is just checking a value.
+	-Finally the display function has complexity O(n) because it has traversal.
+
+Analysis of Undo cancellation complexity:
+	-Undo cancellation is handled in the ReservationManager file.
+	-The complexity is O(n^2) because it has a traversal for identifying duplicates which is O(n) and it has a traversal for resource availability which is O(n).
