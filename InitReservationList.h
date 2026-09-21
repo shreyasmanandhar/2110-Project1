@@ -1,9 +1,9 @@
-/*
+/* INITIAL VERSION
 Shreyas Manandhar (sm4305)
 CSCE 2110 Project 1
 Linked-list Header file
 Description: I am declaring ReservationList, a singly linked-list that holds reservation records that are active currently.
-*/
+
 
 #ifndef RESERVATION_LIST_H
 #define RESERVATION_LIST_H
@@ -48,3 +48,5 @@ class ReservationList{
 		int count;
 };
 #endif
+
+*/
