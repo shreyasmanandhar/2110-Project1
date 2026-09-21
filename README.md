@@ -1,23 +1,15 @@
 # 2110-Project1
 Foundations of Data Structures CSCE 2110 - Project 1
 
-Simple overview of use/purpose.
+This project is intended to provide a Campus Resource Reservation Management System to allow users to; make reservations of campus resources, track history of reservations, generate reports and manage wait lists.
 
 ## Description
 
 An in-depth paragraph about your project and overview of use.
 
-## Getting Started
-
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
-
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* This program is designed for and debugged in the UNT CELL machine environment and requires the user to run the program there.
 
 ### Executing program
 
@@ -50,7 +42,7 @@ Contributors names and contact info
 ## Version History
 
 * 0.1
-    * The current version is the Initial Release
+    * The current version is the Initial Release and is the core functionality of the full system.
 
 
 ## Acknowledgments
