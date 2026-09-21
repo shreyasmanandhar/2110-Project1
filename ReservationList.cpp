@@ -1,9 +1,9 @@
-/*
+/* INITIAL VERSION
 Shreyas Manandhar (sm4305)
 CSCE 2110 Project 1
 Linked-list cpp file
 Description: This defines the reservation list header file's functions.
-*/
+
 
 #include "ReservationList.h"
 using namespace std;
@@ -96,3 +96,5 @@ void ReservationList::display() const{
         current->data.displayRow();
     }
 }
+
+*/
