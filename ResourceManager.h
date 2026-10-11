@@ -1,7 +1,7 @@
 // ResourceManager.h
 // Owns the resource inventory as vectors
 // Loads resources from a text file, displays them, reports availability, and makes data available for other classes
-
+// New Update: I am adding sort (sorting resources by name)
 
 #ifndef RESOURCE_MANAGER_H
 #define RESOURCE_MANAGER_H
@@ -29,6 +29,9 @@ public:
     // Marks resource "id" available or unavailable
     // Returns false if there isn't a resource with that id
     bool setAvailable(const std::string& id, bool newAvailable);
+
+    //this displays resources sorted by name alphabetically
+    void displaySortedName() const;
 
 private:
     std::vector<Resource> resources;
