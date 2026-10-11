@@ -5,6 +5,8 @@
 #include "ReservationManager.h"
 #include "Validation.h"
 #include <iostream>
+#include <algorithm> //ss
+#include <iomanip> //ss
 
 using namespace std;
 
@@ -137,4 +139,46 @@ ReservationStatus ReservationManager::restoreReservation(const Reservation& rese
     activeReservations.insert(reservation);
     resource->setAvailable(false);
     return ReservationStatus::Success;
+}
+
+//add function to display the resources in the waiting list and how many of each , Samuel
+// function to remove duplicates from copy vector
+vector<string> uniqueStrings(vector<string> input) 
+{
+    sort(input.begin(), input.end());
+    input.erase(unique(input.begin(), input.end()), input.end());
+    return input;
+}
+ 
+//function for handling the sorted and simmed vector
+void ReservationManager::WaitingListReport()
+{
+    vector<string> waitlistRec = waitingList.getWaitingResourceIds(); //collect waitinglist resources
+    vector<string> resourceFinal = uniqueStrings(waitlistRec);
+    int arraySize = resourceFinal.size();
+    int countArr[arraySize];
+
+    int i,j;
+
+    for(i = 0; i < resourceFinal.size(); ++i)
+    {
+        countArr[i]=0;
+        for( j = 0; j < waitlistRec.size(); ++j)
+        {
+            if(resourceFinal.at(i) == waitlistRec.at(j))
+            {
+                countArr[i] += 1;
+            }
+        }
+    }
+
+    
+    cout << "Reservation Id and # of students waiting"<<endl;
+    cout << setw(40)<<setfill('-')<<'-'<<endl;
+
+    for(i =0; i < resourceFinal.size(); ++i)
+    {
+        cout<< setw(40)<<setfill(' ')<< left<< resourceFinal.at(i)<< right << "#" <<countArr[i]<<endl;
+    }
+
 }
