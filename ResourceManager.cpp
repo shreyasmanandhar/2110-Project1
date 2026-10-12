@@ -187,3 +187,30 @@ bool ResourceManager::setAvailable(const string& id, bool newAvailable) {
     resource->setAvailable(newAvailable);
     return true;
 }
+
+//function for printing the report containing the resources and their reservation count
+void ResourceManager::resourceReservationReport() const
+{
+    const int ID_WIDTH = 8;
+    const int NAME_WIDTH = 20;
+    const int TYPE_WIDTH = 22;
+
+    const int maxWidth = 67;
+
+    cout << left
+        << setw(ID_WIDTH) << "ID"
+        << setw(NAME_WIDTH) << "Name"
+        << setw(TYPE_WIDTH) << "Type"
+        << "Reservation Count"<<endl;
+
+    cout<<setw(maxWidth)<<setfill('-')<<"-"<<endl;
+
+    for(int i = 0; i < resources.size(); ++i)
+    {
+        cout << left
+        << setw(ID_WIDTH) << resources.at(i).getId()
+        << setw(NAME_WIDTH) << resources.at(i).getName()
+        << setw(TYPE_WIDTH) << resources.at(i).getType()
+        << right << resources.at(i).getResCnt()<<endl;
+    }
+}
