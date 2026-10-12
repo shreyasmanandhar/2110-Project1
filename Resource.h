@@ -36,11 +36,18 @@ public:
     // Prints column titles for a resource table
     static void displayHeader();
 
+    //new functions for generating report, Samuel
+    void updateResCnt();
+    int getResCnt() const;
+
+
 private:
     std::string id;
     std::string name;
     std::string type;
     bool available;
+
+	int reservationCount =0; //ss
 };
 
 #endif
