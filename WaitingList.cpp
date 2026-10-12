@@ -100,3 +100,15 @@ void WaitingList::display() const{
         << current->data.requestDate << '\n';
     }
 }
+
+//returning the resource Id for all waiting req
+vector<string> WaitingList::getWaitingResourceIds() const{
+    vector<string> resourceIds;
+
+    Node* current = front;
+    while (current != nullptr){
+        resourceIds.push_back(current->data.resourceID);
+        current = current->next;
+    }
+    return resourceIds;
+}

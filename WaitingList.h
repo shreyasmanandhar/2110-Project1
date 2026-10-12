@@ -9,6 +9,7 @@ Description: This declares the queue that holds students waiting for resource to
 #define WAITING_LIST_H
 
 #include<string>
+#include<vector>
 
 struct WaitRequest{
     std::string studentID;
@@ -33,6 +34,9 @@ class WaitingList{
 
         //printing the waitlist
         void display() const;
+
+        //for final submission: returns the resource ID of all waiting req
+        std::vector<std::string> getWaitingResourceIds() const;
 
     private:
         struct Node{

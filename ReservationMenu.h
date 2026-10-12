@@ -27,4 +27,7 @@ void handleViewActiveReservations(const ReservationManager& reservationManager);
 // Asks for a resource ID, linear searches it, and shows the result
 void handleSearchResourceById(ResourceManager& resourceManager);
 
+//menu handler for sorting function
+void handleViewResourcesSortedName(const ResourceManager& resourceManager);
+
 #endif

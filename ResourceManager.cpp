@@ -187,3 +187,66 @@ bool ResourceManager::setAvailable(const string& id, bool newAvailable) {
     resource->setAvailable(newAvailable);
     return true;
 }
+
+//Project 1's part 2 merge: Function to merge the sorted sub arrays by name
+static void mergeHalves(vector<Resource>& resources, int left, int mid, int right){
+    int n1 = mid - left +1;
+    int n2 = right - mid;
+
+    //temporary array where I'll copy resources
+    vector<Resource> leftArray(resources.begin()+left, resources.begin()+mid+1);
+    vector<Resource> rightArray(resources.begin()+mid+1, resources.begin()+right+1);
+
+    int i=0, j=0, k=left;
+    //merging the temporary arrays alphabetically
+    while (i<n1 && j<n2){
+        if (leftArray[i].getName() <= rightArray[j].getName()){
+            resources[k] = leftArray[i];
+            i = i+1;
+        }
+        else{
+            resources[k]=rightArray[j];
+            j = j+1;
+        }
+        k= k+1;
+    }
+    
+    //copying the remaining stuff left on either sides
+    while (i<n1){
+        resources[k] = leftArray[i];
+        i++;
+        k++;
+    }
+    while (j<n2){
+        resources[k] = rightArray[j];
+        j++;
+        k++;
+    }
+}
+
+//Merge sort function with recursion
+static void mergeSort(vector<Resource>& resources, int left, int right){
+    if (left >=right){
+        return;
+    }
+    int mid = left + ((right-left)/2);
+
+    mergeSort(resources, left, mid);
+    mergeSort(resources, mid+1, right);
+    mergeHalves(resources, left, mid, right); //merging the arrays
+}
+
+//displaying the sorted array
+void ResourceManager::displaySortedName() const{
+    if (resources.empty()){
+        cout << "There are no resources. Sorting is not possible." << endl;
+        return;
+    }
+    vector<Resource> sortedResources = resources;
+    mergeSort(sortedResources, 0, static_cast<int>(sortedResources.size())-1);
+
+    Resource::displayHeader();
+    for(const Resource& resource : sortedResources){
+        resource.displayRow();
+    }
+}

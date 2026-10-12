@@ -126,3 +126,7 @@ void handleSearchResourceById(ResourceManager& resourceManager) {
     Resource::displayHeader();
     found->displayRow();
 }
+
+void handleViewResourcesSortedName(const ResourceManager& resourceManager){
+    resourceManager.displaySortedName();
+}
