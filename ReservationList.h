@@ -10,7 +10,7 @@ Description: I am declaring ReservationList, a singly linked-list that holds res
 
 #include <string>
 #include "Reservation.h"
-
+class ResourceManager;
 class ReservationList{
 	public:
 		ReservationList(); //constructor
@@ -33,6 +33,8 @@ class ReservationList{
 
 		//prints resources from the lits
 		void display() const;
+
+		bool loadFromFile(const std::string& path, ResourceManager& resourceManager);
 
 	private:
 		struct Node{
