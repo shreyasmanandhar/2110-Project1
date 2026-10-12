@@ -1,7 +1,7 @@
 // ResourceManager.h
 // Owns the resource inventory as vectors
 // Loads resources from a text file, displays them, reports availability, and makes data available for other classes
-
+// New Update: I am adding sort (sorting resources by name)
 
 #ifndef RESOURCE_MANAGER_H
 #define RESOURCE_MANAGER_H
@@ -32,6 +32,8 @@ public:
 
     //function for resource report, Samuel
     void resourceReservationReport() const;
+    //this displays resources sorted by name alphabetically
+    void displaySortedName() const;
 
 private:
     std::vector<Resource> resources;

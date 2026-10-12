@@ -30,7 +30,9 @@ int promptMenuChoice(){
          << "6. View Waitlist\n"
          << "7. Undo Last Cancellation\n"
          << "8. View Cancellation History\n"
-         << "9. Exit\n"
+         << "9. Search Resource by ID [LINEAR SEARCH]\n"
+         << "10. View Resources Sorted by Name [MERGE SORT]\n"
+         << "11. Exit\n"
          << "Enter Choice: ";
     
     int choice = -1;
@@ -124,6 +126,14 @@ int main(){
                 break;
 
             case 9:
+                handleSearchResourceById(resourceManager);
+                break;
+
+            case 10:
+                handleViewResourcesSortedName(resourceManager);
+                break;
+
+            case 11:
                 cout << "Bye. Take Care.\n";
                 operating = false;
                 break;
