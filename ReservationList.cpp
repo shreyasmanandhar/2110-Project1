@@ -6,6 +6,11 @@ Description: This defines the reservation list header file's functions.
 */
 
 #include "ReservationList.h"
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <iostream>
+#include "ResourceManager.h"
 using namespace std;
 
 //constructor
@@ -95,4 +100,42 @@ void ReservationList::display() const{
     for (Node* current = head; current!=nullptr; current=current->next){
         current->data.displayRow();
     }
+}
+
+//final add, file handling stuff for reservation
+bool ReservationList::loadFromFile(const string& path, ResourceManager& resourceManager) {
+    ifstream file(path);
+
+    if (!file.is_open()) {
+        cout << "Error: Could not open " << path << ".\n";
+        return false;
+    }
+
+    string line;
+
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string idText, studentId, studentName, resourceId, date;
+
+        if (!getline(ss, idText, '|') ||
+            !getline(ss, studentId, '|') ||
+            !getline(ss, studentName, '|') ||
+            !getline(ss, resourceId, '|') ||
+            !getline(ss, date)) {
+            continue;
+        }
+
+        int id = stoi(idText);
+
+        Reservation reservation(id, studentId, studentName, resourceId, date);
+        insert(reservation);
+
+        Resource* resource = resourceManager.findById(resourceId);
+		if (resource != nullptr) {
+			resource->updateResCnt();
+			resource->setAvailable(false);
+		}
+    }
+
+    return true;
 }

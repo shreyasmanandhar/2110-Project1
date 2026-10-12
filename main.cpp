@@ -18,6 +18,7 @@ Description: This right here is our main file
 using namespace std;
 
 const string ResourceFile = "data/resources.txt";
+const string ReservationFile = "data/reservations.txt";
 
 //printing menu and reading user's choice
 int promptMenuChoice(){
@@ -32,7 +33,9 @@ int promptMenuChoice(){
          << "8. View Cancellation History\n"
          << "9. Search Resource by ID [LINEAR SEARCH]\n"
          << "10. View Resources Sorted by Name [MERGE SORT]\n"
-         << "11. Exit\n"
+         << "11. Resource Reservation Report\n"
+         << "12. Waiting List Report\n"
+         << "13. Exit\n"
          << "Enter Choice: ";
     
     int choice = -1;
@@ -85,6 +88,11 @@ int main(){
         return 1;
     }
 
+    if (!reservations.loadFromFile(ReservationFile, resourceManager)){
+        cout << "Setup failed: Could not load reservation data.\n";
+        return 1;
+    }
+
     ReservationManager reservationManager(resourceManager, reservations, waitList, cancelHistory);
     bool operating = true;
     while (operating){
@@ -134,6 +142,14 @@ int main(){
                 break;
 
             case 11:
+                resourceManager.resourceReservationReport();
+                break;
+
+            case 12:
+                reservationManager.WaitingListReport();
+                break;
+
+            case 13:
                 cout << "Bye. Take Care.\n";
                 operating = false;
                 break;
