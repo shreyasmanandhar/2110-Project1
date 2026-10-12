@@ -68,6 +68,9 @@ public:
     // Never overrides another reservation
     ReservationStatus restoreReservation(const Reservation& reservation);
 
+    //add function to display the resources in the waiting list and how many of each , Samuel
+    void WaitingListReport();
+
 private:
     // Members are initialized in this order, so the constructor's initializer list uses the same order (-Wall warns if they don't match)
     ResourceManager& inventory;
