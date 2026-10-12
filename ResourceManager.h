@@ -30,6 +30,8 @@ public:
     // Returns false if there isn't a resource with that id
     bool setAvailable(const std::string& id, bool newAvailable);
 
+    //function for resource report, Samuel
+    void resourceReservationReport() const;
     //this displays resources sorted by name alphabetically
     void displaySortedName() const;
 

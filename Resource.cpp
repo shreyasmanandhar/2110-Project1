@@ -51,3 +51,13 @@ void Resource::displayHeader() {
 
     cout << string(ID_WIDTH + NAME_WIDTH + TYPE_WIDTH + STATUS_WIDTH, '-') << '\n';
 }
+
+//functions for the count of reservations,Samuel
+	void Resource::updateResCnt()
+	{
+		++reservationCount;
+	}
+	int Resource::getResCnt() const
+	{
+		return reservationCount;
+	}

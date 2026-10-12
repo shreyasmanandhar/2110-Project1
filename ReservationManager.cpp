@@ -7,6 +7,7 @@
 #include <iostream>
 #include <algorithm> //ss
 #include <iomanip> //ss
+#include <vector> //debug-sm
 
 using namespace std;
 
@@ -63,6 +64,7 @@ ReservationStatus ReservationManager::createReservation(const string& studentId,
 
     activeReservations.insert(reservation);
     resource->setAvailable(false);
+    resource->updateResCnt(); //call function on resource to update count when reserved
     return ReservationStatus::Success;
 }
 
@@ -138,6 +140,7 @@ ReservationStatus ReservationManager::restoreReservation(const Reservation& rese
     // puts the original reservation back and mark the resource taken.
     activeReservations.insert(reservation);
     resource->setAvailable(false);
+    resource->updateResCnt();
     return ReservationStatus::Success;
 }
 
@@ -154,9 +157,12 @@ vector<string> uniqueStrings(vector<string> input)
 void ReservationManager::WaitingListReport()
 {
     vector<string> waitlistRec = waitingList.getWaitingResourceIds(); //collect waitinglist resources
+    if (waitlistRec.empty()){
+        cout << "No students are currently on the waiting list." << endl;
+        return;
+    }
     vector<string> resourceFinal = uniqueStrings(waitlistRec);
-    int arraySize = resourceFinal.size();
-    int countArr[arraySize];
+    vector<int> countArr(resourceFinal.size(),0);
 
     int i,j;
 
@@ -173,7 +179,7 @@ void ReservationManager::WaitingListReport()
     }
 
     
-    cout << "Reservation Id and # of students waiting"<<endl;
+    cout << "Resource Id and Number of students waiting"<<endl;
     cout << setw(40)<<setfill('-')<<'-'<<endl;
 
     for(i =0; i < resourceFinal.size(); ++i)
