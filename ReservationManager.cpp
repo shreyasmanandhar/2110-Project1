@@ -63,6 +63,7 @@ ReservationStatus ReservationManager::createReservation(const string& studentId,
 
     activeReservations.insert(reservation);
     resource->setAvailable(false);
+    resource->updateResCnt(); //call function on resource to update count when reserved
     return ReservationStatus::Success;
 }
 
